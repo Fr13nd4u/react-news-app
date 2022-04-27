@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, FC } from "react";
+import "./App.css";
 
-function App() {
+import { AppRouter } from "./components/AppRouter";
+import Header from "./components/Header";
+import { useLocalStorage } from "./hooks/useLocalStorege";
+
+export const AuthContext = createContext<any>(null);
+
+const App: FC = () => {
+  const [isAuth, setAuth] = useLocalStorage("is-auth", false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={{ isAuth, setAuth }}>
+      <div className="app">
+        <Header />
+        <AppRouter />
+      </div>
+    </AuthContext.Provider>
   );
-}
+};
 
 export default App;
