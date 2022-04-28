@@ -11,7 +11,7 @@ const News: FC = () => {
       <Grid container spacing={2}>
         {data?.articles.map((item: any, index: number) => {
           return (
-            <Grid item xs={3} key={index}>
+            <Grid item xs={12} sm={6} md={3} key={index}>
               <NewsCard
                 title={item.title}
                 content={item.description}

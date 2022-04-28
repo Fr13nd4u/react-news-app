@@ -15,7 +15,7 @@ interface Props {
 
 const NewsCard: FC<Props> = ({ urlToImage, content, title }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin: "auto" }}>
       <CardActionArea>
         <CardMedia component="img" height="140" image={urlToImage} />
         <CardContent>
